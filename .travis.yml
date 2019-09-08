@@ -15,7 +15,7 @@ after_success:
 
   # login to docker cli
   # $DOCKER_PASSWORD and DOCKER_ID will come from travis ci enviornment variables
-  - echo Hello | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push to docker hub
   - docker push jasenpan1987/mulit-client
   - docker push jasenpan1987/mulit-nginx
