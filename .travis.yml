@@ -11,7 +11,7 @@ after_success:
   - docker build -t jasenpan1987/client ./client
   - docker build -t jasenpan1987/nginx ./nginx
   - docker build -t jasenpan1987/server ./server
-  - docker build -t jasejasenpan1987npan/worker ./worker
+  - docker build -t jasenpan1987/worker ./worker
 
   # login to docker cli
   # $DOCKER_PASSWORD and DOCKER_ID will come from travis ci enviornment variables
