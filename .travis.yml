@@ -1,0 +1,23 @@
+sudo: required
+language: generic
+
+service:
+  - docker
+before_install:
+  - docker build -t jasenpan/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true jasenpan/react-test npm test
+after_success:
+  - docker build -t jasenpan/client ./client
+  - docker build -t jasenpan/nginx ./nginx
+  - docker build -t jasenpan/server ./server
+  - docker build -t jasenpan/worker ./worker
+
+  # login to docker cli
+  # $DOCKER_PASSWORD and DOCKER_ID will come from travis ci enviornment variables
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push to docker hub
+  - docker push jasenpan/client
+  - docker push jasenpan/nginx
+  - docker push jasenpan/server
+  - docker push jasenpan/worker
