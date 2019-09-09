@@ -1,11 +1,14 @@
 sudo: required
 language: generic
-
 services:
-  - docker
+- docker
 before_install:
-  - docker build -t jasenpan1987/react-test -f ./client/Dockerfile.dev ./client
+- docker build -t jasenpan1987/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true jasenpan1987/react-test npm test
+- docker run -e CI=true jasenpan1987/react-test npm test
 after_success:
-  - ./build.sh
+- "./build.sh"
+env:
+  global:
+  - secure: uSxwpsJpoqPQ6OK7jTOzYj0evy2c4r5Wwnnf8QQ0LACBllqHzYoQJ4MH/LimxGVZ3zfBAo+eIyR3jnuzKJWxT8UUpaP9pz5I1b1l470q2O4ngAvaSDW3pY2u4kuDmlVLFBoXaLwhPX7OTve9KF+01T0R4UUbLkyPoRng9Qlh1fOuLcLRJxcFI7Mg2fnKH+Zir2jspLCChzQJjg6zNYoNAH93nKoWezZmd4QeU9Fq+bYbhnGYOtvldkg1lQq23AX7F7eJY2F/jF5zQzhqvGFiLEsxVDUB69EXtW/qlpaFHsNt5m7BBB9qBpHDPnEHug3K0Z2EREh3mDYD4ImrRCy/iEOP7c5juFtRHfv1khaohW87mYXjkGZ125Md6tmXNHMecwZgvoFQzTqcQ36q1pM9YQ7jQWY1wFx6bOas4nQWOn1Z6aCoKea6TwyI7QPiokNBhHCCqeIDRYnPMLuH07n59zAx3VrRCQhPMlhGFlZSgx1RerqIuUo2w6GxI8pKVgh0TZXqLY0Om3T/9ORHfT6KPe2tYPC2q9f24/JwpPCiE9069wpp34+RDaXI1Z1nBvQprlTVVWodsDlZLIjdyCUiC1nyOGh0sy3GwhmjFVwlHkIt0KYsTNHzFSl+cu/nkngNZE4D0FFFd7kZbwvDL7BAMPfLtxlNgMCqkk/ogEuby4E=
+  - secure: W056tltLlSplwMPhI8kSetcuz/HTmqUMXoIJ5dJa1MmFGXmh3TF/16eiQeIBuL4LEqvqObyr9HRt1c3W0EhldtGY/lLYzstP7YwJ0ifJpN/JhsAh6NnibMaq/rAOI3n6Arug+ikkZtPiqqCaVfzk80t297+IuUTbwU/H5FZRDfOaP6+J/2dJVZh2cSHdaXrauqqAuU3v5cWDhTky/ujmEGcZCXvIYwgUQmTSxw7H5mgg10QVJK7maMrxsapGlKrISPDS65G3fXPaeprn21L7IzrGSgmn6HXrYWe/jRSFjhBxhJrn+4iNwAiuzR1u0XXliQVaU19gZrl/KFE7W2kHWseBLtdAVancs7w/CiE8A7BioBjkKrc/FnrMEX4jrhonLwPgkZTeGN2iAUySdTsz/tD0KrO2gULtWnIYhu+M38GTVARBsIc4zKoI2h2EevfaLd49pdwDmAJ0a9CYt/RoAO0Z+rYbeq/BHg5hqv1BabG7GSTgZuCNP9eilsmPndnaey4k8i1BtoE2TgQguqMHTNwhLEFTlCJWp/k8mrS72PorLfd8VFbeZ6j6NOkSIBvhMgPgsSwnSr32yDf9pZj2mnPR8f4zTRjDIxUxX0KwZGv1fCF654Kt4yEhPkkYJ6/6NgfRlGrPQCW9eBN1UriaHwZAacs5L24WDJiwtj3mxzk=
